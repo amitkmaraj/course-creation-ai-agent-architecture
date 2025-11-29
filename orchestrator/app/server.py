@@ -1,8 +1,15 @@
 import logging
 import os
 import json
+import warnings
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
+
+# Suppress experimental warnings for A2A components
+warnings.filterwarnings("ignore", message=".*\[EXPERIMENTAL\].*", category=UserWarning)
+
+# Suppress runner app name mismatch warning
+logging.getLogger("google.adk.runners").setLevel(logging.ERROR)
 
 from a2a.server.apps import A2AFastAPIApplication
 from a2a.server.request_handlers import DefaultRequestHandler

@@ -1,8 +1,13 @@
 import os
 import json
+import warnings
 from typing import AsyncGenerator, Any
 import google.auth
 from google.adk.agents import BaseAgent, LoopAgent, SequentialAgent
+
+# Suppress experimental warnings for A2A components
+warnings.filterwarnings("ignore", message=".*\[EXPERIMENTAL\].*", category=UserWarning)
+
 from google.adk.apps.app import App
 from google.adk.events import Event, EventActions
 from google.adk.agents.invocation_context import InvocationContext

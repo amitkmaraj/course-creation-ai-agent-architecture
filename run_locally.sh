@@ -8,7 +8,7 @@ lsof -ti:8000,8001,8002,8003 | xargs kill -9 2>/dev/null
 export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 export GOOGLE_CLOUD_LOCATION="us-central1"
 export GOOGLE_GENAI_USE_VERTEXAI="False" # Use Gemini API locally
-export GOOGLE_API_KEY="your-key-here"
+export GOOGLE_API_KEY="AIzaSyCpJbkAxPwmgcxC7r90hzAvqosLdAceJUg"
 
 echo "Starting Researcher Agent on port 8001..."
 cd researcher
