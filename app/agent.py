@@ -31,7 +31,6 @@ os.environ.setdefault("GOOGLE_CLOUD_PROJECT", project_id)
 os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "us-central1")
 # Use Vertex AI for production, Gemini API for quick testing if needed.
 os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "False")
-os.environ.setdefault("GOOGLE_API_KEY", "your-key-here")
 
 
 # --- Data Models ---

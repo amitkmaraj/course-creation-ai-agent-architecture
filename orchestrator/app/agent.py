@@ -11,7 +11,7 @@ warnings.filterwarnings("ignore", message=".*\[EXPERIMENTAL\].*", category=UserW
 from google.adk.apps.app import App
 from google.adk.events import Event, EventActions
 from google.adk.agents.invocation_context import InvocationContext
-from google.adk.agents.remote_a2a_agent import RemoteA2aAgent
+from app.simple_remote_agent import SimpleRemoteAgent
 from google.adk.agents.callback_context import CallbackContext
 
 # --- Configuration ---
@@ -52,29 +52,30 @@ def create_save_output_callback(key: str):
     return callback
 
 # --- Remote Agents ---
-# These agents are running in their own containers. We connect to them via A2A.
+# These agents are running in their own containers. We connect to them via SimpleRemoteAgent.
 
 # Default URLs assume local running on different ports if env vars are not set.
-researcher_url = os.environ.get("RESEARCHER_AGENT_CARD_URL", "http://localhost:8001/.well-known/agent.json")
-researcher = RemoteA2aAgent(
+# Note: We use the base URL (e.g., http://localhost:8001) instead of the agent card URL.
+researcher_url = os.environ.get("RESEARCHER_URL", "http://localhost:8001")
+researcher = SimpleRemoteAgent(
     name="researcher",
-    agent_card=researcher_url,
+    base_url=researcher_url,
     description="Gathers information on a topic using Google Search.",
     after_agent_callback=create_save_output_callback("research_findings")
 )
 
-judge_url = os.environ.get("JUDGE_AGENT_CARD_URL", "http://localhost:8002/.well-known/agent.json")
-judge = RemoteA2aAgent(
+judge_url = os.environ.get("JUDGE_URL", "http://localhost:8002")
+judge = SimpleRemoteAgent(
     name="judge",
-    agent_card=judge_url,
+    base_url=judge_url,
     description="Evaluates research findings for completeness and accuracy.",
     after_agent_callback=create_save_output_callback("judge_feedback")
 )
 
-content_builder_url = os.environ.get("CONTENT_BUILDER_AGENT_CARD_URL", "http://localhost:8003/.well-known/agent.json")
-content_builder = RemoteA2aAgent(
+content_builder_url = os.environ.get("CONTENT_BUILDER_URL", "http://localhost:8003")
+content_builder = SimpleRemoteAgent(
     name="content_builder",
-    agent_card=content_builder_url,
+    base_url=content_builder_url,
     description="Transforms research findings into a structured course."
 )
 

@@ -32,6 +32,11 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+check_*
+inspect_*
+list_*
+find_*
+
 video_scripts/
 video_scripts/*
 

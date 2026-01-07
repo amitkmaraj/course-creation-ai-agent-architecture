@@ -24,7 +24,7 @@ playground:
 	@echo "==============================================================================="
 	# Export necessary env vars for the orchestrator process running under adk web
 	export GOOGLE_GENAI_USE_VERTEXAI="False"
-	export GOOGLE_API_KEY="your-key-here"
+	export GOOGLE_API_KEY="<your-api-key>"
 	export RESEARCHER_AGENT_CARD_URL="http://localhost:8001/.well-known/agent.json"
 	export JUDGE_AGENT_CARD_URL="http://localhost:8002/.well-known/agent.json"
 	export CONTENT_BUILDER_AGENT_CARD_URL="http://localhost:8003/.well-known/agent.json"
