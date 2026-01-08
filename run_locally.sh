@@ -7,8 +7,8 @@ lsof -ti:8000,8001,8002,8003 | xargs kill -9 2>/dev/null
 # Set common environment variables for local development
 export GOOGLE_CLOUD_PROJECT=$(gcloud config get-value project)
 export GOOGLE_CLOUD_LOCATION="us-central1"
-export GOOGLE_GENAI_USE_VERTEXAI="False" # Use Gemini API locally
-export GOOGLE_API_KEY="<enter-your-key-here>"
+export GOOGLE_GENAI_USE_VERTEXAI="True" # Use Gemini API locally
+export GOOGLE_API_KEY="<your-key-here>" # Use if not using Vertex AI
 
 echo "Starting Researcher Agent on port 8001..."
 cd researcher

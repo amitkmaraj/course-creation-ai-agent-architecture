@@ -13,6 +13,7 @@ dependencies = [
     "fastapi==0.128.0",
     "uvicorn==0.34.0",
     "psycopg2-binary==2.9.10",
+    "a2a-sdk",
 ]
 
 requires-python = ">=3.10,<3.14"
@@ -56,7 +57,7 @@ select = [
 ignore = ["E501", "C901", "B006"] # ignore line too long, too complex
 
 [tool.ruff.lint.isort]
-known-first-party = ["app", "frontend"]
+known-first-party = ["frontend"]
 
 [tool.mypy]
 disallow_untyped_calls = true
@@ -91,7 +92,7 @@ pythonpath = "."
 asyncio_default_fixture_loop_scope = "function"
 
 [tool.hatch.build.targets.wheel]
-packages = ["app","frontend"]
+packages = ["frontend"]
 
 [[tool.uv.index]]
 name = "pypi"

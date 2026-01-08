@@ -4,9 +4,10 @@ version = "0.1.0"
 description = "Judge microservice agent"
 requires-python = ">=3.10,<3.14"
 dependencies = [
-    "google-adk==1.18.0",
+    "google-adk>=0.1.4",
+    "a2a-sdk==0.3.22",
+    "uvicorn",
     "fastapi==0.128.0",
-    "uvicorn==0.34.0",
     "google-cloud-logging==3.12.0",
     "opentelemetry-exporter-gcp-trace==1.9.0",
 ]

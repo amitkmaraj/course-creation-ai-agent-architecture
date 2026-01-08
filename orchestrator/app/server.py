@@ -6,10 +6,14 @@ from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
 # Suppress experimental warnings for A2A components
-warnings.filterwarnings("ignore", message=".*\[EXPERIMENTAL\].*", category=UserWarning)
+warnings.filterwarnings("ignore", message=r".*\[EXPERIMENTAL\].*", category=UserWarning)
 
 # Suppress runner app name mismatch warning
+logging.getLogger("google_adk.google.adk.runners").setLevel(logging.ERROR)
 logging.getLogger("google.adk.runners").setLevel(logging.ERROR)
+
+# Suppress Google Auth warnings
+warnings.filterwarnings("ignore", message=".*Your application has authenticated using end user credentials.*")
 
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse

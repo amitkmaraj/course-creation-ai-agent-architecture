@@ -12,7 +12,7 @@ except Exception:
     # If no credentials available, continue without setting project
     pass
 
-os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "europe-west1")
+os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "us-central1")
 os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "True")
 
 MODEL = "gemini-2.5-pro"
